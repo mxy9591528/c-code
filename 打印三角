@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<windows.h>
+int main()
+{
+	int n = 0;
+	printf("请输入层数:\n");
+	scanf("%d", &n);
+	getchar();
+	printf("请输入打印的符号:\n");
+	int c = getchar();
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j <n+1- i; j++)
+		{
+			printf(" ");
+		}
+		for (int j = 0; j <= i; j++)
+		{
+			printf("%c ",c);
+		}
+		printf("\n");
+	}
+	Sleep(20000);
+	return 0;
+}
