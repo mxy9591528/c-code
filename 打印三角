@@ -6,7 +6,7 @@ int main()
 	int n = 0;
 	printf("请输入层数:\n");
 	scanf("%d", &n);
-	getchar();
+	getchar();//取出第一次输入后的换行符
 	printf("请输入打印的符号:\n");
 	int c = getchar();
 	for (int i = 0; i < n; i++)
@@ -21,6 +21,6 @@ int main()
 		}
 		printf("\n");
 	}
-	Sleep(20000);
+	Sleep(20000);//不知为什么程序结果无法停留，在控制台条件下
 	return 0;
 }
