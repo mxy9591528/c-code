@@ -1,0 +1,48 @@
+#include<stdio.h>
+int sum(int a,int b,int c,int d,int e)
+{
+	int q = a, w = b, y = c, r = d, t = e;
+	return q * 10000 + w * 1000 + y * 100 + r * 10 + t;
+}
+int main()
+{
+	int a = 1, b, c, d, e = 0;
+	for (a = 1; a < 9; a++)
+	{
+		for (b = 0; b < 9; b++)
+		{
+			for (c = 0; c < 9; c++)
+			{
+				for (d = 0; d < 9; d++)
+				{
+					for (e = 0; e < 9; e++)
+					{
+						if (sum(a, b, c, d, e) == a * sum(0, b, c, d, e) + sum(0, 0, 0, a, b)*sum(0, 0, c, d, e) + sum(0, 0, a, b, c)*sum(0, 0, 0, d, e) + sum(0, a, b, c, d)*e)
+							printf("%d ", sum(a, b, c, d, e));
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+//最开始用的太麻烦，后来看见别人写了这样一个代码
+//简单多了
+
+#include<stdio.h>
+int main()
+{
+	int number, j;
+	for (number = 10000; number < 99999; number++)
+	{
+		int sum = 0;
+		for (j = 10; j <= 10000; j = j * 10)
+		{
+			sum = sum + (number / j)*(number%j);
+		}
+		if (sum == number)
+			printf("%d ", number);
+	}
+	return 0;
+}
