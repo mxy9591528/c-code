@@ -39,7 +39,7 @@ int main()
 		int sum = 0;
 		for (j = 10; j <= 10000; j = j * 10)
 		{
-			sum = sum + (number / j)*(number%j);
+			sum = sum + (number / j)*(number%j);//灵活运用整除与取模将数字拆分
 		}
 		if (sum == number)
 			printf("%d ", number);
