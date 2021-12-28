@@ -1,0 +1,26 @@
+#include<stdio.h>
+int main()
+{
+	int n, i, j, temp, arr[45];
+	scanf("%d", &n);
+	if (n >= 5 && n <= 50)
+		for (i = 0; i < n; i++)
+		{
+			scanf("%d", &arr[i]);//获取每个人的成绩
+		}
+	for (i = 0; i < n; i++)
+	{
+		for (j = i; j < n; j++)//通过循环挑选将数组内元素按从大到小排序
+		{
+			if (arr[i] < arr[j])
+			{
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+	for (i = 0; i < 5; i++)
+		printf("%d ", arr[i]);
+	return 0;
+}
