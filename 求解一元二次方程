@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    float a,b,c;
+    while(~scanf("%f %f %f",&a,&b,&c))
+    {
+        float y=b*b-4*a*c;
+        if(a!=0)
+        {
+            if(y==0)
+            {
+                if(b==0)//因为当b=0时出现了-0.00的结果，不满足题意
+                    printf("x1=x2=%.2f\n",b/a/2);
+                else
+                    printf("x1=x2=%.2f\n",-b/a/2);
+            }
+            else if(y>0)
+                printf("x1=%.2f;x2=%.2f\n",(-b-sqrt(y))/a/2,(-b+sqrt(y))/a/2);
+            else
+                printf("x1=%.2f-%.2fi;x2=%.2f+%.2fi\n",-b/a/2,sqrt(-y)/a/2,-b/a/2,sqrt(-y)/a/2);
+        }
+        else
+            printf("Not quadratic equation\n");
+    }
+    return 0;
+}
+
+针对每组输入，输出一行，输出一元二次方程ax2 + bx +c = 0的根的情况。
+
+  如果a = 0，输出“Not quadratic equation”；
+
+  如果a ≠  0，分三种情况：
+
+△ = 0，则两个实根相等，输出形式为：x1=x2=...。
+
+△  > 0，则两个实根不等，输出形式为：x1=...;x2=...，其中x1  <=  x2。
+
+△  < 0，则有两个虚根，则输出：x1=实部-虚部i;x2=实部+虚部i，即x1的虚部系数小于等于x2的虚部系数，实部为0时不可省略。实部= -b / (2*a),虚部= sqrt(-△ ) / (2*a)
+
+所有实数部分要求精确到小数点后2位，数字、符号之间没有空格。
