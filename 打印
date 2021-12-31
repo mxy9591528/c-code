@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
-#include<windows.h>
 int main()
 {
 	int n = 0;
@@ -21,6 +20,31 @@ int main()
 		}
 		printf("\n");
 	}
-	Sleep(20000);//不知为什么程序结果无法停留，在控制台条件下
 	return 0;
 }
+
+#include<stdio.h>
+int main()
+{
+	int n, i = 0, j = 0;
+	while (~scanf("%d", &n))
+	{
+		for (i = 0; i < n + 1; i++)
+		{
+			for (j = 0; j < n - i; j++)
+				printf(" ");
+			for (j = 0; j <= i; j++)
+				printf("* ");
+			printf("\n");
+		}//打印上半部分三角
+		i = n;
+		for (; i > 0; i--)
+		{
+			for (j = 0; j <= n - i; j++)
+				printf(" ");
+			for (j = 0; j < i; j++)
+				printf("* ");
+			printf("\n");
+		}//打印下半部分三角
+	}
+	return 0;
