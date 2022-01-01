@@ -1,0 +1,37 @@
+void print(int n)
+{
+	if (n > 9)
+		print(n /10);
+	printf("%d ", n%10);
+}
+
+int my_str(char* str)
+{
+	if (*str != '\0')
+		return 1 + my_str(str + 1);
+	else
+		return 0;
+}
+
+int strl(char* s)
+{
+	int count = 0;
+	while (*s != '\0')
+	{
+		count++;
+		s++;
+	}
+	return count;
+}//一般做法
+
+int main()
+{
+	int n = 0;
+	char arr[] = "qwerasdfzxcv";
+	printf("%d   %d", my_str(arr),strl(arr));
+	while (~scanf("%d", &n))
+	{
+		print(n);
+	}
+  return 0；
+  }
