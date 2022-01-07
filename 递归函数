@@ -33,5 +33,17 @@ int main()
 	{
 		print(n);
 	}
+	
+	int str(char*str)
+{
+	char*start = str;
+	char*end = str;
+	while (*end != '\0')
+	{
+		end++;
+	};
+	return end - start;
+}//指针strlen
+
   return 0；
   }
