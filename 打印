@@ -48,3 +48,45 @@ int main()
 		}//打印下半部分三角
 	}
 	return 0;
+
+#include<stdio.h>
+int main()
+{
+	int n, i = 0, j = 0, q = 0;
+	while (~scanf("%d", &n))
+	{
+		int x = n;
+		for (q = 0; q <= n; q++)
+		{
+			for (i = 0; i < 2 * x; i++)
+			{
+				printf(" ");
+			}
+			x--;
+			for (j = 0; j < q + 1; j++)
+			{
+				printf("*");
+			}
+			printf("\n");
+		}
+		x = 1;
+		int c = n+1;
+		for (q = 0; q < n; q++)
+		{
+			for (i = 0; i<2*x; i++)
+			{
+				printf(" ");
+			}
+			x++;
+			c--;
+			for (j = 0; j <c; j++)
+			{
+				printf("*");
+			}
+			if (x == n+1)
+				break;
+			printf("\n");
+		}
+	}
+	return 0;
+}//打印箭形
