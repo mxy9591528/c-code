@@ -20,4 +20,22 @@ int main()
 	if (i == 3)
 		printf("密码错误三次，程序自动退出\n");
 	return 0;
-}
+}//strcmp函数
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char str[] = "LOVE";
+	int count = 0;
+	char a;
+	while (~scanf("%c", &a))
+	{
+		if (strchr(str, a))
+			count++;
+		else
+			break;
+	}
+	printf("%d\n", count);
+	return 0;
+}//strchr函数
