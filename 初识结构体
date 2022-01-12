@@ -1,0 +1,33 @@
+#include<stdio.h>
+
+typedef struct solor
+{
+	char name[10];
+	int age;
+	int distance;
+}Sun;
+
+typedef struct Universe
+{
+	char name[20];
+	int distance;
+	Sun s;
+}UN;
+
+void print_1(UN u)
+{
+	printf("%s\n%d\n%s\n%d\n%d\n", u.name, u.distance, u.s.name, u.s.age, u.s.distance);
+}
+
+void print_2(UN* p)
+{
+	printf("%s\n%d\n%s\n%d\n%d\n",p->name,p->distance,p->s.name,p->s.age,p->s.distance);
+}//推荐，占用内存少
+
+int main()
+{
+	UN u = { "solor-system",4321688,{"earth",45,666888999} };
+	print_1(u);
+	print_2(&u);
+	return 0;
+}
