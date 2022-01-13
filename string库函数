@@ -39,3 +39,37 @@ int main()
 	printf("%d\n", count);
 	return 0;
 }//strchr函数
+
+#include<stdio.h>
+#include<assert.h>
+
+char*F_strcpy(char*destination, const char*source)//char类型返回有助于函数嵌套调用 +1分;const修饰，防止指针被修改 +1分
+{
+	char *ret = destination;
+	assert(*destination != NULL&&*source!=NULL);//断言函数，在无效指针情况下报错
+	while(*destination++=*source++)//简化代码
+	{
+		;
+	}
+	return ret;
+}//满分实现strcpy函数
+
+int F_strlen(const char*str)//const修饰，防止指针被修改
+{
+	int count = 0;
+	assert(*str != NULL);//断言函数，在无效指针情况下报错
+	while (*str != '\0')
+	{
+		str++;
+		count++;
+	}
+	return count;
+}//满分实现strlen函数
+
+int main()
+{
+	char a[] = "***********";
+	char b[] = "qwer";
+	printf("%s\n%d\n%d",  F_strcpy(a,b),F_strlen(a), F_strlen(b));
+	return 0;
+}
