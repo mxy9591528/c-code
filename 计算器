@@ -1,0 +1,146 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+void menu()
+{
+	printf("** 1.Add           2.Sub          **\n");
+	printf("** 3.Mul           4.Div          **\n");
+	printf("** 5.Xor           6.Rightmove    **\n");
+	printf("** 7.Leftmove      0.Exit         **\n");
+}
+int Add(int x, int y)
+{
+	return x + y;
+}
+int Sub(int x, int y)
+{
+	return x - y;
+}
+int Mul(int x, int y)
+{
+	return x * y;
+}
+int Div(int x, int y)
+{
+	return x / y;
+}
+int Xor(int x, int y)
+{
+	return x ^ y;
+}
+int Right_move(int x, int y)
+{
+	return x >>= y;
+}
+int Left_move(int x, int y)
+{
+	return x <<= y;
+}
+int main()
+{
+	int x = 0;
+	int y = 0;
+	int input = 0;
+	int(*pa[8])(int, int) = { Add,Sub,Mul,Div,Xor,Right_move,Left_move };// 
+	do 
+	{
+		menu();
+		printf("请选择>:");
+		scanf("%d", &input);
+		if (input == 0)
+			break;
+		else if (input >= 1 && input <= 8)
+		{
+			printf("请输入两个整数:>\n");
+			scanf("%d%d", &x, &y);
+			printf("%d\n", pa[input-1](x, y));
+		}
+		else
+			printf("输入错误\n");
+	} while (input);
+	return 0;
+}
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+void menu()
+{
+	printf("** 1.Add           2.Sub          **\n");
+	printf("** 3.Mul           4.Div          **\n");
+	printf("** 5.Xor           6.Rightmove    **\n");
+	printf("** 7.Leftmove      0.Exit         **\n");
+}
+int Add(int x, int y)
+{
+	return x + y;
+}
+int Sub(int x, int y)
+{
+	return x - y;
+}
+int Mul(int x, int y)
+{
+	return x * y;
+}
+int Div(int x, int y)
+{
+	return x / y;
+}
+int Xor(int x, int y)
+{
+	return x^y;
+}
+int Right_move(int x, int y)
+{
+	return x >>= y;
+}
+int Left_move(int x, int y)
+{
+	return x<<= y;
+}
+void Reuse(int(*pf)(int,int))//回调函数
+{
+	int x = 0;
+	int y = 0;
+	printf("请输入两个整数:>\n");
+	scanf("%d%d", &x, &y);
+	printf("%d\n", pf(x, y));
+}
+int main()
+{
+	int input = 0;
+	do{
+		menu();
+		printf("请选择>:");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 0:
+			break;
+		case 1:
+			Reuse(Add);
+			break;
+		case 2:
+			Reuse(Sub);
+			break;
+		case 3:
+			Reuse(Mul);
+			break;
+		case 4:
+			Reuse(Div);
+			break;
+		case 5:
+			Reuse(Xor);
+			break;
+		case 6:
+			Reuse(Right_move);
+			break;
+		case 7:
+			Reuse(Left_move);
+			break;
+		default:
+			printf("输入错误\n");
+			break;
+		}
+	} while (input);
+	return 0;
+}
