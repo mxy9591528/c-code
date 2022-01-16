@@ -33,6 +33,63 @@ int cmp_int(const void* e1,const void* e2)
 }
 int main()
 {
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct Stu
+{
+	char name[20];
+	int age[10];
+};
+int int_cmp(const void*e1,const void*e2)//void类型指针
+{
+	return *(int*)e1 -*(int*)e2;
+}
+int d_cmp(const void*e1, const void*e2)
+{
+	if ((double*)e1 - (double*)e2 == 0)
+		return 0;
+	else if ((double*)e1 - (double*)e2 < 0)
+		return -1;
+	else
+		return 1;
+}
+int Stu_cmp(const void* e1, const void*e2)
+{
+	return strcmp(((struct Stu*)e1)->name,((struct Stu*)e2)->name);
+}
+void test()
+{
+	int arr[] = { 2,4,34,334,64,23,5,8,45,24,6,7 };
+	double a[] = { 3.5,9.3,2.4,9.9,1,3,6.74,3.14 };
+	struct Stu s[3] = { {"张三",20},{"李四",30},{"王五",10} };
+	int sz_1 = sizeof(arr) / sizeof(arr[0]);
+	int sz_2 = sizeof(a) / sizeof(a[0]);
+	int sz_3 = sizeof(s) / sizeof(s[0]);
+	qsort(arr, sz_1, sizeof(arr[0]), int_cmp);
+	qsort(a, sz_2, sizeof(a[0]), d_cmp);
+	qsort(s, sz_3, sizeof(s[0]), Stu_cmp);//qsort函数
+	for (int i = 0; i < sz_1;i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+	for (int i = 0; i < sz_2; i++)
+	{
+		printf("%f ", a[i]);
+	}
+	printf("\n");
+	for (int i = 0; i < sz_3; i++)
+	{
+		printf("%s,%d ", s[i].name,*s[i].age);
+	}
+}
+int main()
+{
+	test();
+	return 0;
+}
 	int n, i,  arr[45];
 	scanf("%d", &n);
 		for (i = 0; i < n; i++)
