@@ -31,3 +31,64 @@ int main()
 	}
 	return 0;
 }
+
+#include<stdio.h>
+#include<string.h>
+
+
+double pow(double x, double y)
+{
+	if (y < 0)
+		return 1 / pow(x, -y);
+	else if (y == 1)
+		return 1;
+	else
+		return x * pow(x, y - 1);
+}
+void reverse_1(char a[])//char*
+{
+	int left = 0, right = strlen(a)-1;
+	char temp;
+	while (left < right)
+	{
+		temp = a[left];
+		a[left] = a[right];
+		a[right] = temp;
+		left++;
+		right--;
+	}
+}//
+
+void reverse_2(char* a)
+{
+	char temp = a[0];
+	int s = strlen(a) - 1;
+	a[0] = a[s];
+	a[s] = '\0';
+	if (strlen(a + 1) >= 2)
+		reverse_2(a + 1);
+	a[s] = temp;
+}//递归,不推荐
+
+int sum_n(int n)
+{
+	if (n > 9)
+		return sum_n(n / 10) + n % 10;
+	else
+		return n;
+}
+
+int main()
+{
+	char a[] = "abcdef";
+	char b[] = "fedcba";
+	double c = 0, d = 0;
+	scanf("%lf%lf", &c, &d);
+	reverse_1(a);
+	reverse_2(b);
+	int n = 0;
+	scanf("%d", &n);
+	printf("%d", sum_n(n));
+	printf("\n%s\n%s\n%lf" ,a,b,pow(c,d));
+	return 0;
+}
