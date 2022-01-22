@@ -1,0 +1,33 @@
+#include<stdio.h>
+int main()
+{
+	int arr[100] = { 0 };
+	int n = 0;
+	while (~scanf("%d", &n))
+	{
+		int i = 2;
+		int j = 0;
+		int count = 0;
+		for (i = 2; i < n; i++)
+		{
+			arr[i - 2] = i;
+		}
+		for (i = 2; i < n; i++)
+		{
+			for (j = i; j < n; j++)
+			{
+				if (arr[j - 1] % i == 0)
+					arr[j - 1] = 0;
+			}
+        }
+			for (i = 0; i < n-1; i++)//2到20十九个数，要减一，防止零多出一位
+			{
+				if (arr[i] == 0)
+					count++;
+				else
+					printf("%d ",arr[i]);
+			}
+			printf("\n%d ", count);
+			return 0;
+		}
+}
