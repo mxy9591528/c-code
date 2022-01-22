@@ -30,4 +30,4 @@ int main()
 			printf("\n%d ", count);
 			return 0;
 		}
-}
+}//筛选法
