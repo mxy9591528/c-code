@@ -65,11 +65,21 @@ int F_strlen(const char*str)//const修饰，防止指针被修改
 	}
 	return count;
 }//满分实现strlen函数
-
+int T_strlen(const char*str)
+ {
+	assert(str);
+	if (*str !=0 )
+	{
+		str++;
+		return 1 + T_strlen(str);
+	}
+	 else
+		return 0;
+}
 int main()
 {
 	char a[] = "***********";
 	char b[] = "qwer";
-	printf("%s\n%d\n%d",  F_strcpy(a,b),F_strlen(a), F_strlen(b));
+	printf("%s\n%d\n%d",  F_strcpy(a,b),F_strlen(a), F_strlen(b),T_strlen(b));
 	return 0;
 }
