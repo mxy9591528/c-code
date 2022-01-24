@@ -76,6 +76,23 @@ int T_strlen(const char*str)
 	 else
 		return 0;
 }
+#include<stdio.h>
+#include<assert.h>
+char*F_strcat(char*dest, const char*sre)
+{
+	char* ret = dest;
+	assert(dest&&sre);
+	while (*dest++)
+	{
+		;
+	}
+	while (*(dest++-1)=*sre++)
+	{
+		;
+	}
+	return ret;
+}//strcat
+
 int main()
 {
 	char a[] = "***********";
