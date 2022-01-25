@@ -81,7 +81,7 @@ int F_strlen(const char*str)//const修饰，防止指针被修改
 int T_strlen(const char*str)
  {
 	assert(str);
-	if (*str !=0 )
+	if (*str !='\0' )
 	{
 		str++;
 		return 1 + T_strlen(str);
@@ -111,11 +111,11 @@ char*F_strcat(char*dest, const char*sre)
 {
 	char* ret = dest;
 	assert(dest&&sre);
-	while (*dest++)
+	while (*dest)
 	{
-		;
+		dest++;
 	}
-	while (*(dest++-1)=*sre++)
+	while (*dest++=*sre++)
 	{
 		;
 	}
