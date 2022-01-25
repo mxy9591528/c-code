@@ -76,6 +76,22 @@ int T_strlen(const char*str)
 	 else
 		return 0;
 }
+int F_strcmp(const char*e1, const char*e2)
+{
+	assert(e1&&e2);
+	while (*e1 == *e2)
+	{
+		if(*e1=='\0')
+			return 0;
+		e1++;
+		e2++;
+	}
+	if (*e1>*e2 )
+		return 1;
+	else
+		return -1;
+}
+
 #include<stdio.h>
 #include<assert.h>
 char*F_strcat(char*dest, const char*sre)
