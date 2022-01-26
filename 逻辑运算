@@ -93,3 +93,15 @@ int main()
 	printf("\n%d\n%d\n%d\n%d", count,c,a,b);
 	return 0;
 }//计算二进制数中1的个数
+
+#include<stdio.h>
+int main()
+{
+	char p = 0;
+	for (p = 'a'; p < 'e'; p++)
+	{
+		if ((p != 'a') + (p == 'd') + (p == 'b') + (p != 'd') == 1)
+			printf("%c", p);
+	}
+	return 0;
+}//判断
