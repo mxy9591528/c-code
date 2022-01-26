@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<string.h>
+#include<assert.h>
+void Left_move(char*a, int n)
+{
+	int len = strlen(a) - 1;
+	assert(a);
+	assert(n <= len + 1);
+	for (int i = 0; i < n; i++)
+	{
+		char tmp = *a;
+		for (int j = 0; j < len; j++)
+		{
+			*(a+j) = *(a+j+ 1);
+		}
+		*(a+len)= tmp;
+	}
+}//一般方法
+void reverse(char*e1, char*e2)
+{
+	assert(e1&&e2);
+	while (e1<e2)
+	{
+		char tmp = *e1;
+		*e1 =* e2;
+		*e2 = tmp;
+		e1++;
+		e2--;
+	}
+}
+void Left_move_t(char*a, int n)
+{
+	int len = strlen(a) - 1;
+	assert(a);
+	assert(n <=len + 1);
+	reverse(a,a+n-1);
+	reverse(a + n, a + len);
+	reverse(a, a + len);
+}//三部翻转法
+int Is_Left_move(char*a, char*b)
+{
+	assert(a&&b);
+	int len = strlen(b)+1;
+	while (len--)
+	{
+		Left_move(b, 1);
+		if (strcmp(a, b) == 0)
+			return 1;
+	}
+	return 0;
+}
+int Is_Left_move_t(char*a,char*b)
+{
+	int len1 = strlen(a);
+	int len2 = strlen(b);
+	if (len1 != len2)
+		return 0;
+	strncat(a, a, len1);
+	if (strstr(a, b) == NULL)//strstr函数，查找是否含有该子字符串
+		return 0;
+	else
+		return 1;
+}
+
+int main()
+{
+	char a[30] = "abcdef";
+	char b[] = "bcdefa";
+	int n = 0;
+	int ret = Is_Left_move_t(a, b);
+	if (ret == 1)
+		printf("YES");
+	else
+		printf("NO");
+	scanf("%d", &n);
+	Left_move_t(a, n);
+	printf("%s\n",a);
+	return 0;
+}
