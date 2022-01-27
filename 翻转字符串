@@ -3,7 +3,7 @@
 #include<assert.h>
 void Left_move(char*a, int n)
 {
-	int len = strlen(a) - 1;
+	size_t len = strlen(a) - 1;
 	assert(a);
 	assert(n <= len + 1);
 	for (int i = 0; i < n; i++)
@@ -30,7 +30,7 @@ void reverse(char*e1, char*e2)
 }
 void Left_move_t(char*a, int n)
 {
-	int len = strlen(a) - 1;
+	size_t len = strlen(a) - 1;
 	assert(a);
 	assert(n <=len + 1);
 	reverse(a,a+n-1);
@@ -40,7 +40,7 @@ void Left_move_t(char*a, int n)
 int Is_Left_move(char*a, char*b)
 {
 	assert(a&&b);
-	int len = strlen(b)+1;
+	size_t len = strlen(b)+1;
 	while (len--)
 	{
 		Left_move(b, 1);
@@ -51,8 +51,8 @@ int Is_Left_move(char*a, char*b)
 }
 int Is_Left_move_t(char*a,char*b)
 {
-	int len1 = strlen(a);
-	int len2 = strlen(b);
+	size_t len1 = strlen(a);
+	size_t len2 = strlen(b);
 	if (len1 != len2)
 		return 0;
 	strncat(a, a, len1);
