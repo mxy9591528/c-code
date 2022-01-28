@@ -185,3 +185,33 @@ int main()
 	printf("%s\n", str_1(a,b));
 	return 0;
 }
+
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+#include<ctype.h>
+#include<stdlib.h>
+int main()
+{
+	char n[] = "mxy2287352895@outlook.com";
+	char ncpy[100] = { 0 };
+	strcpy(ncpy, n);
+	char*p="@.";
+	char*ret = NULL;
+	for (int i = 0; i < strlen(n); i++)
+	{
+		if (islower(n[i]))
+			n[i]=toupper(n[i]);
+		printf("%c", n[i]);
+	}
+	FILE*pf = fopen("learn1.c", "r");
+	if (pf == NULL)
+		printf("%s\n", strerror(errno));
+	else
+		printf("\noperation success\n");
+	for (ret=strtok(n, p);ret!=NULL;ret=strtok(NULL,p))
+	{
+		printf("%s\n", ret);
+	}
+	return 0;
+}
