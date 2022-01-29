@@ -6,6 +6,17 @@ int check()
 	return (*(char*)&x);
 }//计算机数据排列模式
 
+int check()
+{
+	union R
+	{
+		char a;
+		int b;
+	}r;
+	r.b = 1;
+	return r.a;
+}//利用联合体实现
+
 int main()
 {
 	if (check() == 1)
