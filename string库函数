@@ -105,6 +105,18 @@ int F_strcmp(const char*e1, const char*e2)
 		return -1;
 }
 
+int T_strncmp(const char*e1, const char*e2,int n)
+{
+	assert(e1&&e2);
+	while ((*e1 == *e2)&&n)
+	{
+		e1++;
+		e2++;
+		n--;//记录
+	}
+	return (int)(*e1 - *e2);
+}
+
 #include<stdio.h>
 #include<assert.h>
 char*F_strcat(char*dest, const char*sre)
@@ -229,6 +241,17 @@ void*my_memcpy(void*dest, const void*source, size_t n)
 	}
 	return ret;
 }//实现memcpy
+int my_memcmp(const void*e1, const void*e2, size_t n)
+{
+	assert(e1&&e2);
+	while ((*(char*)e1 == *(char*)e2) && n)//n要小于等于字符串的长度，可以不用if再判断
+	{
+		++(char*)e1;//先强转再++
+		++(char*)e2;
+		n--;//记录
+	}
+	return (int)(*(char*)e1 - *(char*)e2);
+}
 void*my_memmove(void*dest, const void*source, size_t n)
 {
 	void*ret = dest;
