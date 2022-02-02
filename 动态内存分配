@@ -7,11 +7,15 @@ int main()
 	int i = 0;
 	int n = 0;
 	scanf("%d", &n);
-	int*p = (int*)malloc(LLONG_MAX); //n * sizeof(int)
-	if (!p)
+	int*p = (int*)malloc(n * sizeof(int)); //n * sizeof(int)
+	int*q = (int*)calloc(10, sizeof(int));//会初始空间存放0
+	int*tmp=(int*)realloc(q, 20);//创建新的指针接收，防止失败后原数据丢失
+	//扩大空间时，后续足够直接追加，不够开辟新的，再拷贝原数据并释放旧指针,直接缩小空间
+	if (!p||!q||!tmp)//assert(...)
 		printf("%s\n", strerror(errno));
 	else
 	{
+		q = tmp;
 		for (i = 0; i < n; i++)
 		{
 			*(p + i) = i;
@@ -19,6 +23,8 @@ int main()
 		}
 	}
 	free(p);
+	free(q);
 	p = NULL;//置为空指针，保证数据安全
+	q = NULL;
 	return 0;
 }
