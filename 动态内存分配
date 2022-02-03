@@ -8,6 +8,7 @@ int main()
 	int n = 0;
 	scanf("%d", &n);
 	int*p = (int*)malloc(n * sizeof(int)); //n * sizeof(int)
+	//与int*p = (int*)realloc(NULL, n * sizeof(int));相同
 	int*q = (int*)calloc(10, sizeof(int));//会初始空间存放0
 	int*tmp=(int*)realloc(q, 20);//创建新的指针接收，防止失败后原数据丢失
 	//扩大空间时，后续足够直接追加，不够开辟新的，再拷贝原数据并释放旧指针,直接缩小空间
