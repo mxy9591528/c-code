@@ -10,6 +10,12 @@ int main()
 	FILE*p2 = fopen("./2.txt", "a");//./相对路径，只在当前文件夹，../指在上一级文件夹
 	FILE*p3 = fopen("../3.txt", "a");//D:\编程\学习\txt.3
 	FILE*p4 = fopen("C:\\Users\\马县杨\\Desktop\\21011111 马县杨.txt", "r");
+	FILE*p5 = fopen("C:\\Users\\马县杨\\Desktop\\1.txt", "r");
+	fseek(p5, 3, SEEK_CUR);//以某一位置的偏移量寻找文本内容，向右为正
+	printf("%d\n", ftell(p5));//返回距起始位置的偏移量
+	rewind(p5);//将文件指针指向起始位置
+	printf("%d\n", ftell(p5));
+	printf("%c\n",fgetc(p5));
 	if (!p1 || !p2 || !p3||!p4)
 	{
 		printf("%s\n", strerror(errno));
@@ -33,9 +39,11 @@ int main()
 	fclose(p2);
 	fclose(p3);
 	fclose(p4);
+	fclose(p5);
 	p1 = NULL;
 	p2 = NULL;
 	p3 = NULL;
 	p4 = NULL;
+	p5 = NULL;
 	return 0;
 }
