@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int a = 12345;
+	char b[3] = "ha\0";
+	char c[2] = { 0 };
+	char buf[9999] = { 0 };
+	FILE*p1 = fopen("1.txt", "w");
+	FILE*p2 = fopen("./2.txt", "a");//./相对路径，只在当前文件夹，../指在上一级文件夹
+	FILE*p3 = fopen("../3.txt", "a");//D:\编程\学习\txt.3
+	FILE*p4 = fopen("C:\\Users\\马县杨\\Desktop\\21011111 马县杨.txt", "r");
+	if (!p1 || !p2 || !p3||!p4)
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}
+	fwrite(&a, 4, 1, p1);
+	fwrite(&b[0], 1, 1, p2);
+	fwrite(&b[1], 1, 1, p3);
+	/*fgets(buf, 99999, p4);//单行打印读取
+	fputs(buf, stdout);*/
+	for (int i = 0; i < 9999; i++)
+	{
+		fscanf(p4, "%c", &buf[i]);
+		printf("%c", buf[i]);
+	}
+	fprintf(stdout, "%s", b);//将b中数据传给任意输出流
+	sprintf(c, "%c%c", b[0], b[1]);//将b中数据传给c，格式化的形式写文件
+	sscanf(b,"%c%c", &c[0], &c[1]);//格式化输入,将b中的数据赋给c
+	fputc(fgetc(stdin),stdout);//stdin输入流，stdout输出流
+	fclose(p1);
+	fclose(p2);
+	fclose(p3);
+	fclose(p4);
+	p1 = NULL;
+	p2 = NULL;
+	p3 = NULL;
+	p4 = NULL;
+	return 0;
+}
