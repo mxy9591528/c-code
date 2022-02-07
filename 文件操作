@@ -47,3 +47,24 @@ int main()
 	p5 = NULL;
 	return 0;
 }
+
+#include<stdio.h>
+int main()
+{
+	FILE*p = fopen("1.txt", "r");
+	if (!p)
+	{
+		perror("hhh");//比strerror更简单
+	}
+	char ch = 0;
+	while ((ch=fgetc(p))!=EOF)//while(!fread(&ch,sizeof(ch),1,p))
+	{
+		putchar(ch);
+ 	}
+	printf("\n");
+	if (ferror(p))
+		printf("Error!\n");
+	if(feof(p))
+		printf("End of file\n");
+	return 0;
+}
