@@ -1,0 +1,44 @@
+#include<stdio.h>
+#define log fprintf(p, "file=%s line=%d time=%s %s function=%s i=%d\n",__FILE__, __LINE__, __TIME__, __DATE__,__FUNCTION__,i)
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	FILE*p = fopen("learn1_log.txt", "w");
+	for (int i = 0; i < n; i += 3)
+	{
+		log;
+	}
+	fclose(p);
+	p = NULL;
+}
+
+#include<stdio.h>
+#include<stddef.h>
+#include<stdlib.h>
+#define MAX(X,Y) (X)>(Y)?(X):(Y)
+#define PRINT(X) printf(#X"=%d\n", X)//#修饰，代表名
+#define CONNECT(X,Y) X##Y//##修饰，连接
+#define MALLOC(num,type) (type*)malloc(num*sizeof(type))
+#define OFFSETOF(struct_name,name) ((int)(&(((struct_name*)0)->name)))
+
+struct p
+{
+	int n;
+	short b;
+	char c[3];
+	long long d;
+};
+int main()
+{
+	int a = 10;
+	int b = 11;
+	int nowyear = 2022;
+	int*p = MALLOC(10, int);
+	printf("%d\n%d\n", offsetof(struct p, d),OFFSETOF(struct p,b));
+	printf("%d\n%d\n%d\n", MAX(a++, b++), a, b);
+	PRINT(a);
+	printf("It's %d year\n", CONNECT(now, year));
+#undef MAX
+	return 0;
+}
