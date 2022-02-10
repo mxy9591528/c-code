@@ -90,3 +90,52 @@ int main()
 	}
 	return 0;
 }//打印箭形
+
+#include<stdio.h>
+int main()
+{
+	int n = 0, i = 0, j = 0;
+	while (~scanf("%d", &n))
+	{
+		int ret = n;
+		for (i = 0; i < n - (n/2); i++)
+		{
+			ret -= 2;
+			for (j = 0; j < i; j++)
+			{
+				printf(" ");
+			}
+			printf("*");
+			for (j = 0; j < ret; j++)
+			{
+				printf(" ");
+			}
+			if (i == n - (n/2)-1 && n % 2 == 1)
+				;
+			else
+				printf("*");
+			printf("\n");
+		}
+		for (i = n - (n/2)-(n%2); i > 0; i--)
+		{
+			for (j = 0; j < i - 1; j++)
+			{
+				printf(" ");
+			}
+			if (i == n - (n / 2) && n % 2 == 1)
+				;
+			else
+				printf("*");
+			for (j = n - 2 * i; j > 0; j--)
+			{
+				printf(" ");
+			}
+			if (i == n - (n / 2) && n % 2 == 1)
+				;
+			else
+				printf("*");
+			printf("\n");
+		}
+	}
+	return 0;
+}
