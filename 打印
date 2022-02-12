@@ -139,3 +139,20 @@ int main()
 	}
 	return 0;
 }//打印X
+#include<stdio.h>
+int main()
+{
+	int i, j, n;
+	scanf("%d", &n);
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			if (i == j || ((i == n - j - 1) && i != j))
+				printf("*");
+			else
+				printf(" ");
+		}
+		printf("\n");
+	}
+}//规律版打印X
