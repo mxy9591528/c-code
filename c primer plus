@@ -1,0 +1,154 @@
+#include<stdio.h>
+#include<string.h>
+void test2()
+{
+	double x = 100;
+	double y = 100;
+	double sumx=0, sumy=0;
+	int n = 1;
+	while (n++)
+	{
+		sumx = n * x*0.1;
+		sumy += y * 0.05;
+		if (sumx < sumy)
+		{
+			break;
+		}
+		else
+		{
+			y = y * (1.05);
+		}
+	}
+	printf("%d\n", n);
+	n = 1;
+	double total = 100;
+	while (n++)
+	{
+		total = total * (1.08) - 10;
+		if (total <= 0)
+		{
+			break;
+		}
+	}
+	printf("%d\n", n);
+	int init = 5;
+	n = 1;
+	while (n)
+	{
+		int friend = (init - n) * 2;
+		if (friend > 150)
+		{
+			break;
+		}
+		init = friend;
+		printf("第%d周朋友数量：%d\n", n, friend);
+		n++;
+	}
+}
+double Ca(double x, double y)
+{
+	return (x - y) / x * y;
+}
+void test1()
+{
+	char arr[26] = { 0 };
+	for (int i = 97; i < 123; i++)
+	{
+		arr[i - 97] = i;
+		printf("%c", arr[i - 97]);
+	}
+	printf("\n");
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j <= i; j++)
+		{
+			printf("$");
+		}
+		printf("\n");
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j <= i; j++)
+		{
+			printf("%c", 'f' - j);
+		}
+		printf("\n");
+	}
+	int count = 0;
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j <= i; j++)
+		{
+			printf("%c", 'a' + count);
+			count++;
+		}
+		printf("\n");
+	}
+	char a;
+	printf("please enter an alpha:\n");
+	scanf("%c", &a);
+	for (int i = 0; i <= a - 'A'; i++)
+	{
+		for (int z = i; z < a - 'A'; z++)
+		{
+			printf(" ");
+		}
+		for (char j = 'A'; j - 'A' <= i; j++)
+		{
+			printf("%c", j);
+		}
+		for (char j = 'A' + i - 1; j >= 'A'; j--)
+		{
+			printf("%c", j);
+		}
+		printf("\n");
+	}
+	printf("please enter two number to define the limit:\n");
+	int uplimit, downlimit;
+	int sum = 0;
+	scanf("%d%d", &downlimit, &uplimit);
+	for (int i = downlimit; i <= uplimit; i++)
+	{
+		printf("原数：%d  平方数：%d  立方数：%d\n", i, i*i, i*i*i);
+		sum += i * i;
+	}
+	printf("%d\n", sum);
+	char ch[20] = { 0 };
+	int q = 0;
+	while ((ch[q] = getchar()) != '\n')
+	{
+		q++;
+	}
+	printf("%zd\n", strlen(ch));
+	while (q--)
+	{
+		printf("%c", ch[q]);
+	}
+	printf("%lf\n", Ca(3.1415926, 2.714));
+	double d1[8];
+	double d2[8];
+	double sum1 = 0;
+	printf("Please enter num:\n");
+	for (int i = 0; i < 8; i++)
+	{
+		scanf("%lf", &d1[i]);
+		sum1 += d1[i];
+		d2[i] = sum1;
+	}
+	for (int i = 0; i < 8; i++)
+	{
+		printf("%lf ", d1[i]);
+	}
+	printf("\n");
+	for (int i = 0; i < 8; i++)
+	{
+		printf("%lf ", d2[i]);
+	}
+	printf("\n");
+}
+int main()
+{
+	//test1()
+	test2();
+	return 0;	
+}
