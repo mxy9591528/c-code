@@ -152,3 +152,313 @@ int main()
 	test2();
 	return 0;	
 }
+
+
+#include<stdio.h>
+#include<math.h>
+#include<stdbool.h>
+#define A 2.05
+#define B 1.15
+#define C 1.09
+void test1()
+{
+	char ch;
+	while ((ch = getchar()) != '#')
+	{
+		if (ch == '\n')
+			ch=getchar();
+		printf("Step 1\n");
+		if (ch == 'c')
+		{
+			ch=getchar();
+			printf("Step 1\n");
+		}
+		if (ch == 'b')
+			break;
+		if (ch == 'h')
+		{
+			printf("Step 3\n");
+			getchar();
+		}
+		if(ch!='h')
+			printf("Step 2\n");
+	}
+	printf("Done\n");
+	return ;
+}
+void test2()
+{
+	char ch;
+	int countspace = 0;
+	int countn = 0;
+	int countother = 0;
+	while ((ch= getchar()) != '#')
+	{
+		if (ch == '#')
+			break;
+		if (ch == ' ')
+			countspace++;
+		else if (ch == '\n')
+			countn++;
+		else
+			countother++;
+	}
+	printf("空格数：%d,换行符数：%d,其它字符数：%d", countspace, countn, countother);
+}
+void test3()
+{
+	for (int i = 1, ch = getchar(); i<9, ch != '#'; i++,ch=getchar())
+	{
+		printf("%c-%d", ch, ch);
+		if (i % 8 == 0)
+		{
+			i = 1;
+			printf("\n");
+		}
+	}
+}
+void test4()
+{
+	int n;
+	int sum_o = 0,count_o=0,count_d=0,sum_d = 0;
+	while ((n =( getchar()-48)) != 0)
+	{
+		if (n == '\n')
+			continue;
+		if (n % 2 == 0)
+		{
+			sum_d += n;
+			count_d++;
+		}
+		else
+		{
+			sum_o += n;
+			count_o++;
+		}
+	}
+	printf("偶数个数：%d,偶数平均值：%d;奇数个数：%d,奇数平均值：%d\n",count_d,sum_d/count_d,count_o,sum_o/count_o);
+}
+void test5()
+{
+	char ch;
+	int count = 0;
+	while ((ch = getchar()) != '#')
+	{
+		switch (ch)
+		{
+		case '.':
+			ch = '!';
+			count++;
+			break;
+		case '!':
+			ch = '!!';
+			count++;
+			break;
+		default:
+			;
+		}
+		/*if (ch == '.')
+		{
+			ch = '!';
+			count++;
+		}
+		else if (ch == '!')
+		{
+			ch = '!!';
+			count++;
+		}*/
+	}
+	printf("替换次数：%d", count);
+}
+void test6()
+{
+	char ch;
+	char temp;
+	int count = 0;
+	while ((ch=getchar())!= '#')
+	{
+		if (ch == 'e' && (temp = getchar()) == 'i')
+			count++;
+		else if (temp == 'e'&&ch == 'i')
+			count++;
+	}
+	printf("count=%d\n", count);
+}
+void menu()
+{
+	printf("*****************************************************************\n");
+	printf("\nEntee the number corresponding to the desired pay rate or action:\n");
+	printf("1) $8.75/hr                        2)$9.33/hr\n");
+	printf("3) $10.00/hr                       4)$11.20/hr\n");
+	printf("5) quit\n");
+	printf("\n*****************************************************************\n");
+}
+void ce(double INCOME)
+{
+	double hour;
+	printf("Please enter work time:\n");
+	scanf("%lf", &hour);
+	double pincome = 0;
+	double income = 0;
+	if (hour <= 30)
+	{
+		income = hour * INCOME;
+		pincome = income * (1 - 0.15);
+	}
+	else if (hour <= 40)
+	{
+		income = 300 + (hour - 30)*INCOME;
+		pincome = (income - 300)*(1 - 0.2) + 300 * (1 - 0.15);
+	}
+	else
+	{
+		income = 400 + (hour - 40)*1.5*INCOME;
+		if ((hour - 40)*1.5*INCOME <= 50)
+			pincome = 300 * (1 - 0.15) + 100 * (1 - 0.2) + (hour - 40)*1.5*INCOME*(1 - 0.2);
+		else
+			pincome = 300 * (1 - 0.15) + 150 * (1 - 0.2) + (hour - 40)*1.5*INCOME*(1 - 0.25);
+	}
+	printf("总收入：%lf,税费：%lf,净收入：%lf\n", income, income - pincome, pincome);
+}
+void test7()
+{
+	double INCOME;
+	while (1)
+	{
+		menu();
+		printf("请选择>:");
+		int choice;
+		scanf("%d", &choice);
+		switch (choice)
+		{
+		case 1:
+			INCOME = 8.75;
+			ce(INCOME);
+			break;
+		case 2:
+			INCOME = 9.33;
+			ce(INCOME);
+			break;
+		case 3:
+			INCOME = 10.00;
+			ce(INCOME);
+			break;
+		case 4:
+			INCOME = 11.20;
+			ce(INCOME);
+			break;
+		case 5:
+			return;
+		default:
+			printf("Error,try again\n");
+		}
+	}
+}
+void test8()
+{
+	//bool flag = true;
+	double n;
+	printf("Please enter number\n");
+	scanf("%lf", &n);
+	if (n - (int)n > 0)
+		return;
+	else
+	{
+		for (int i = 2; i < pow(n, 0.5); i++)
+		{
+			if ((int)n%i == 0)
+			{
+				//flag = false;
+				printf("Not a prime\n");
+				return;
+			}
+		}
+		printf("Is a prime\n");
+		/*if (flag)
+			printf("Is a prime\n");
+		else
+			printf("Not a prime\n");*/
+	}
+}
+int temp()
+{
+	int n, ret = 0;
+	printf("请输入重量：\n");
+	scanf("%d", &n);
+	getchar();
+	return n;
+}
+void test9()
+{
+	int a, b, c,a_t=0,b_t=0,c_t=0,ret_a = 0, ret_b = 0, ret_c = 0;
+	int t_w;
+	char choice;
+	while (1)
+	{
+		printf("请选择>:\n");
+		scanf("%c", &choice);
+		getchar();
+		switch (choice)
+		{
+		case 'a':
+			a = temp();
+			a_t = a + ret_a;
+			ret_a = a;
+			break;
+		case 'b':
+			b = temp();
+			b_t = b + ret_b;
+			ret_b = a;
+			break;
+		case 'c':
+			c = temp();
+			c_t = c + ret_c;
+			ret_c = c;
+			break;
+		case 'q':
+			goto a;
+		default:
+			;
+		}
+	}
+a:	t_w = a_t + b_t + c_t;
+	double packingfreight = 0;
+	if (t_w <= 5)
+		packingfreight = 6.5;
+	else if (t_w <= 20)
+		packingfreight = 14;
+	else
+		packingfreight = 14 + (t_w - 20)*0.5;
+	double v_o_c = a_t * A + b_t * B + c_t * C;
+	double f_p = 0;
+	if (v_o_c > 100)
+	{
+		f_p = v_o_c * 0.05;
+	}
+	double f_o_v_c = v_o_c - f_p;
+	double t_c = v_o_c + packingfreight;
+	printf("        物品售价       订购的重量     订购的蔬菜费用\n");
+	printf("洋蓟：  %-15.2lf%-15d%-15.2lf\n", A, a_t,A*a_t);
+	printf("甜菜：  %-15.2lf%-15d%-15.2lf\n", B, b_t,B*b_t);
+	printf("胡萝卜：%-15.2lf%-15d%-15.2lf\n", C, c_t,C*c_t);
+	printf("订单的总费用：%.2lf\n", v_o_c);
+	if (f_p)
+	{
+		printf("折扣：%.2lf\n", f_p);
+	}
+	printf("运费和包装费：%.2lf\n", packingfreight);
+	printf("所有费用：%.2lf", t_c);
+}
+int main()
+{
+	//test1();
+	//test2();
+	//test3();
+	//test4();
+	//test5();
+	//test6();
+	//test7();
+	//test8();
+	//test9();
+	return 0;
+}
