@@ -462,3 +462,53 @@ int main()
 	//test9();
 	return 0;
 }
+
+#include<stdio.h>
+#include<ctype.h>
+#include<time.h>
+void test1()
+{
+	char ch;
+	int count = 0;
+	int count_up = 0, count_low = 0;
+	int word_num = 0;
+	while ((ch = getchar()) != EOF)
+	{
+		if (isupper(ch))
+			count_up++;
+		else if (islower(ch))
+			count_low++;
+		if (ispunct(ch))
+			word_num++;
+		else
+			count++;
+		putchar(ch);
+	}
+	int ave = count / word_num;
+	printf("%d %d\n", count, ave);
+}
+void test2()
+{
+	int c_n = rand() % 100 + 1;
+	int p_n;
+	printf("请输入数字：\n");
+	while (1)
+	{
+		scanf("%d", &p_n);
+		if (p_n > c_n)
+			printf("猜大了\n");
+		else if (p_n < c_n)
+			printf("猜小了\n");
+		else
+		{
+			printf("猜对了了\n");
+			break;
+		}
+	}
+}
+int main()
+{
+	srand((unsigned int)time(NULL));
+	//test1();
+	//test2();
+}
