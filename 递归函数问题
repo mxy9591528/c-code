@@ -50,3 +50,19 @@ int main()
 	printf("%d\n%d\n%d\n%d\n%d", my_str(arr),strl(arr),mul(n),move(n),jump(n));
 return 0；
 }
+
+#include<stdio.h>
+int fun(int n)
+{
+    if(n<=2)
+        return n;
+    else
+        return fun(n-1)+fun(n-2);
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    printf("%d",fun(n));
+    return 0;
+}
