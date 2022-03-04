@@ -42,4 +42,3 @@ int main()
 #undef MAX
 	return 0;
 }
-1
