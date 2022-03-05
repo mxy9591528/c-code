@@ -156,3 +156,44 @@ int main()
 		printf("\n");
 	}
 }//规律版打印X
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    for(int i=0;i<4*n;i++)
+    {
+        if(i>=3*n)
+        {
+            for(int j=0;j<3*n-1;j++)
+                printf(" ");
+            printf("*");
+            printf("\n");
+        }
+        else
+        {
+            int ret=i;
+            int count=0;
+            while(ret>2)
+            {
+                ret-=3;
+                count++;
+            }
+            for(int j=i;j<3*n-1;j++)
+                printf(" ");
+            for(int k=0;k<=ret;k++)
+                printf("* ");
+            for(int q=2*ret;q<4;q++)
+                printf(" ");
+            while(count--)
+            {
+                for(int k=0;k<=ret;k++)
+                    printf("* ");
+                for(int q=2*ret;q<4;q++)
+                    printf(" ");
+            }
+            printf("\n");
+        }
+    }
+}//打印圣诞树简单版
