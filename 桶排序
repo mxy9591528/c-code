@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int n,temp;
+    scanf("%d",&n);
+    int p[1001]={};
+    for(int i=0;i<1001;i++)
+    {
+        scanf("%d",&temp);
+        p[temp]=temp;
+    }
+    for(int i=0;i<1001;i++)
+    {
+        if(p[i])
+            printf("%d ",p[i]);
+    }
+}
