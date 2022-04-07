@@ -36,7 +36,7 @@ void Left_move_t(char*a, int n)
 	reverse(a,a+n-1);
 	reverse(a + n, a + len);
 	reverse(a, a + len);
-}//三部翻转法
+}//三步翻转法
 int Is_Left_move(char*a, char*b)
 {
 	assert(a&&b);
